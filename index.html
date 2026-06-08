@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>BC Registration - Secure Application Form</title> 
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Banner Image (as requested) -->
+        <header>
+            <img class="header-banner" src="https://i.ibb.co/rRH8hN5t/Chat-GPT-Image-Jun-7-2026-04-08-26-PM.png" alt="Registration Banner">
+            <span class="header-title">Bc Registration</span>
+        </header>
+
+       <form id="registrationForm">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name</label>
+                            <input type="text" name="entry.143619649" placeholder="Enter your name" required>
+                        </div>
+                         
+                    <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="tel" name="entry.957537184"  placeholder="Enter mobile number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="email"  name="entry.1490728744" placeholder="Enter your email" required>
+                        </div>
+
+                       <div class="input-field">
+                            <label>Pin code</label>
+                            <input type="text"  name="entry.662087074" placeholder="Enter your Pin code" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Aadhar card</label>
+                            <input type="text"  name="entry.1628115605" placeholder="Enter your Aadhar card number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Pan card</label>
+                            <input type="text"  name="entry.2102241057"  placeholder="Enter your Pan card number" required>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="nextBtn" type="button">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                <div class="details ID">
+          
+                </div> 
+            </div>
+
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">Education and civil/Personal details in Yes/No </span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Education </label>
+                            <input type="text"  name="entry.2135515899" placeholder="Enter 10th and 12th marksheet" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label> CIBIL score </label>
+                            <input type="text"  name="entry.583838927"  placeholder="Enter CIBIL score 650+ " required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>  certificate   </label>
+                            <input type="text"  name="entry.196860014"  placeholder="Enter You have your IIBF " required>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        
+                        <button class="sumbit" type="submit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <!-- Thank you toast message (unchanged) -->
+    <div id="thankYouMessage" style="
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #4BB543;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        font-size: 16px;
+        z-index: 999;
+        font-family: 'Poppins', sans-serif;
+        white-space: nowrap;
+    ">
+        Thank you for your submission!
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* LIGHT BLUE BACKGROUND */
+        body{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #b8d4f0;  /* Soft halka blue (light blue) */
+            padding: 20px;
+        }
+        
+        .container{
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            border-radius: 6px;
+            padding: 30px;
+            margin: 0 15px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Header modifications: banner image plus original title styling */
+        .container header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .header-banner {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .header-title {
+            position: relative;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        /* Keep original ::before pseudo-element style for consistency */
+        .container header .header-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 3px;
+            width: 27px;
+            border-radius: 8px;
+            background-color: #4070f4;
+        }
+        
+        /* For smaller screens ensure banner is responsive */
+        @media (max-width: 550px) {
+            .container {
+                padding: 20px;
+            }
+            .header-banner {
+                border-radius: 8px;
+            }
+            .header-title {
+                font-size: 18px;
+            }
+        }
+        
+        /* CRITICAL FIX: Form container and positioning - ensures buttons visible on all devices */
+        .container form{
+            position: relative;
+            margin-top: 16px;
+            min-height: 380px;  /* Increased to ensure proper space for buttons */
+            background-color: #fff;
+            overflow: visible;  /* Changed from hidden to prevent button cutoff */
+        }
+        
+        .container form .form{
+            position: absolute;
+            background-color: #fff;
+            transition: 0.3s ease;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+        
+        .container form .form.second{
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(100%);
+        }
+        
+        form.secActive .form.second{
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
+            position: relative;  /* Critical: allows second form to take proper height */
+        }
+        
+        form.secActive .form.first{
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-100%);
+            position: absolute;  /* Keep first form hidden but positioned */
+        }
+        
+        /* When form is not in secActive, second form should be hidden but properly positioned */
+        form:not(.secActive) .form.second {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(100%);
+            position: absolute;
+        }
+        
+        /* Ensure .details address has proper padding and buttons are visible */
+        .details.address {
+            width: 100%;
+            padding-bottom: 10px;
+        }
+        
+        .container form .title{
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 6px 0;
+            color: #333;
+        }
+        
+        .container form .fields{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        form .fields .input-field{
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+        
+        .input-field label{
+            font-size: 12px;
+            font-weight: 500;
+            color: #2e2e2e;
+        }
+        
+        .input-field input, select{
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+            width: 100%;
+            background-color: #fff;
+        }
+        
+        .input-field input:focus,
+        .input-field select:focus{
+            box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+            border-color: #4070f4;
+        }
+        
+        .input-field select,
+        .input-field input[type="date"]{
+            color: #707070;
+        }
+        
+        .input-field input[type="date"]:valid{
+            color: #333;
+        }
+        
+        /* Button styling - fully visible and properly positioned */
+        .container form button, .backBtn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 25px 0 15px 0;
+            background-color: #4070f4;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+        
+        /* Next button specific styling */
+        .nextBtn {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .container form .btnText{
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        form button:hover{
+            background-color: #265df2;
+        }
+        
+        form button i,
+        form .backBtn i{
+            margin: 0 6px;
+        }
+        
+        form .backBtn i{
+            transform: rotate(180deg);
+        }
+        
+        form .buttons{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+        
+        form .buttons button, 
+        form .buttons .backBtn{
+            margin-right: 0;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .sumbit {
+            background-color: #4070f4;
+            cursor: pointer;
+        }
+        
+        .backBtn {
+            background-color: #6c757d;
+        }
+        
+        .backBtn:hover {
+            background-color: #5a6268;
+        }
+        
+        /* Mobile friendly improvements: responsive and scrollable if needed */
+        @media (max-width: 750px) {
+            .container form{
+                overflow-y: auto;
+                max-height: 65vh;
+                min-height: 450px;
+            }
+            .container form::-webkit-scrollbar{
+               display: none;
+            }
+            form .fields .input-field{
+                width: calc(100% / 2 - 15px);
+            }
+            .header-banner {
+                max-height: 140px;
+                object-fit: cover;
+            }
+            /* Ensure buttons are always visible on mobile */
+            .buttons {
+                justify-content: flex-start;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 550px) {
+            form .fields .input-field{
+                width: 100%;
+            }
+            .container form {
+                max-height: 70vh;
+                min-height: 500px;
+            }
+            .buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .backBtn, .sumbit {
+                max-width: 180px;
+            }
+            #thankYouMessage {
+                white-space: normal;
+                text-align: center;
+                font-size: 14px;
+                width: 90%;
+                bottom: 15px;
+            }
+        }
+        
+        /* Laptop/Desktop specific fix - ensure second page buttons visible */
+        @media (min-width: 1024px) {
+            .container form {
+                min-height: 420px;
+            }
+            .form.second .details.address {
+                min-height: 350px;
+                display: flex;
+                flex-direction: column;
+            }
+            .buttons {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Fix for any overflow and touch-friendly */
+        input, button, .backBtn {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        /* Ensure second form content is fully clickable */
+        .form.second {
+            z-index: 2;
+        }
+        
+        /* Additional fix for button visibility on all screens */
+        .details.address {
+            width: 100%;
+        }
+        
+        .fields + .buttons {
+            clear: both;
+        }
+    </style>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const nextBtn = document.querySelector(".nextBtn");
+        const backBtn = document.querySelector(".backBtn");
+        const thankYouMessage = document.getElementById("thankYouMessage");
+
+        const gformUrl = "https://docs.google.com/forms/d/e/1FAIpQLSe__CzeI3CtmPQGnDkWAKsrClM9i8Du6DaQoDfMRj2wgfydZg/formResponse";
+
+        // Next button validation (unchanged behaviour)
+        nextBtn.addEventListener("click", (e) => {
+            e.preventDefault(); 
+            const allInput = document.querySelectorAll(".first input");
+            let isFilled = true;
+
+            allInput.forEach(input => {
+                if (input.value.trim() === "") {
+                    isFilled = false;
+                    input.style.borderColor = "#e74c3c";
+                } else {
+                    input.style.borderColor = "#aaa";
+                }
+            });
+
+            if (isFilled) {
+                form.classList.add('secActive');
+                // Scroll to top of form on next for better UX on mobile
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                alert("Please fill in all personal details.");
+            }
+        });
+
+        // Back button: goes to first page
+        backBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            form.classList.remove('secActive');
+            // Scroll to top when going back
+            const container = document.querySelector('.container');
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+
+        // Submit handler with Google Forms integration
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Validate second page inputs (education, cibil, certificate)
+            const secondInputs = document.querySelectorAll(".second .input-field input");
+            let secondValid = true;
+            secondInputs.forEach(input => {
+                if (input.value.trim() === "") {
+                    secondValid = false;
+                    input.style.borderColor = "#e74c3c";
+                } else {
+                    input.style.borderColor = "#aaa";
+                }
+            });
+
+            if (!secondValid) {
+                alert("Please fill all fields in Education & personal details section.");
+                return;
+            }
+
+            const formData = new FormData(form);
+
+            // Send data to Google Forms (no-cors mode, same as original)
+            fetch(gformUrl, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                // Show success message
+                thankYouMessage.style.display = "block";
+                setTimeout(() => {
+                    thankYouMessage.style.display = "none";
+                    form.reset();
+                    form.classList.remove('secActive');
+                    // Reset any red borders after reset
+                    document.querySelectorAll(".first input, .second input").forEach(inp => {
+                        inp.style.borderColor = "#aaa";
+                    });
+                }, 4000);
+            }).catch(err => {
+                console.error("Submission error:", err);
+                alert("Something went wrong. Please check your internet connection and try again.");
+            });
+        });
+        
+        // Live validation to remove red border when user types (UX improvement without changing structure)
+        document.querySelectorAll(".first input, .second input").forEach(input => {
+            input.addEventListener("input", function() {
+                if (this.value.trim() !== "") {
+                    this.style.borderColor = "#aaa";
+                }
+            });
+        });
+        
+        // Ensure numeric fields have proper handling but retain original behavior
+        const mobileInput = document.querySelector("input[name='entry.957537184']");
+        if (mobileInput) {
+            mobileInput.addEventListener("input", function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+            });
+        }
+        
+        const aadharInput = document.querySelector("input[name='entry.1628115605']");
+        if (aadharInput) {
+            aadharInput.addEventListener("input", function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12);
+            });
+        }
+        
+        const pincodeInput = document.querySelector("input[name='entry.662087074']");
+        if (pincodeInput) {
+            pincodeInput.addEventListener("input", function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);
+            });
+        }
+        
+        const panInput = document.querySelector("input[name='entry.2102241057']");
+        if (panInput) {
+            panInput.addEventListener("input", function(e) {
+                this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+            });
+        }
+        
+        // Additional fix: ensure on window resize the form layout adjusts
+        window.addEventListener('resize', function() {
+            if (form.classList.contains('secActive')) {
+                // Force reflow to ensure proper positioning on resize
+                const secondForm = document.querySelector('.form.second');
+                if (secondForm) {
+                    secondForm.style.opacity = '0.99';
+                    setTimeout(() => {
+                        secondForm.style.opacity = '1';
+                    }, 10);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
